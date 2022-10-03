@@ -1,3 +1,4 @@
+from fcntl import DN_DELETE
 from arbol import Arbol
 
 
