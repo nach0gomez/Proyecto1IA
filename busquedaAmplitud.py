@@ -1,4 +1,3 @@
-from fcntl import DN_DELETE
 from arbol import Arbol
 
 
@@ -20,6 +19,7 @@ def busquedaAmplitud(arbol):
     return recorrido
 
 
+# * Este es el arbol que estamos representando
 """
                     5
              6             7
