@@ -4,4 +4,6 @@ class Arbol:
         self.left = left
         self.right = right
     
-  # hola 
+   
+#nacho
+
