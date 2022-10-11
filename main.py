@@ -83,11 +83,12 @@ objArbol = Arbol (0.0,
                     Arbol(0.3, None, None, None, None, None), None),                    
                     None, None),
              None, None, None)
+             
 print(busquedaAmplitud(objArbol))
 
 
 # * Grafica de un grafo completo
-G = nx.complete_graph (50) # * funcion que genera grafo completo de n vertices
+G = nx.cycle_graph(10) # * funcion que genera grafo circular de 10 vertices, que no me pete el pc :D
 nx.draw_circular(G, with_labels=True, node_size=600, alpha=1.0,
                       node_color='Gainsboro', font_size=14,
                      font_weight='bold') # * Dibujar el grafo G con los atributos especificados
