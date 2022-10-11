@@ -1,5 +1,7 @@
 from arbol import Arbol
-from decimal import Decimal
+import networkx as nx
+import matplotlib.pyplot as plt 
+
 
 
 def busquedaAmplitud(arbol):  
@@ -82,3 +84,13 @@ objArbol = Arbol (0.0,
                     None, None),
              None, None, None)
 print(busquedaAmplitud(objArbol))
+
+
+# * Grafica de un grafo completo
+G = nx.complete_graph (50) # * funcion que genera grafo completo de n vertices
+nx.draw_circular(G, with_labels=True, node_size=600, alpha=1.0,
+                      node_color='Gainsboro', font_size=14,
+                     font_weight='bold') # * Dibujar el grafo G con los atributos especificados
+plt.axis("equal") # * redimensionar los ejes a longitudes iguales
+plt.show () # * Mostrar el grafo G por pantalla
+
