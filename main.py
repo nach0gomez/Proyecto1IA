@@ -58,34 +58,6 @@ def busquedaAmplitud(arbol):
 #print(busquedaAmplitud(objArbol))
 
 # TODO arbol inicio fin 
-"""objArbol1 = Arbol(0.0,
-                         Arbol(4.0,
-                         Arbol(4.3,
-                         Arbol(0.3, None, None),
-                         Arbol(4, None, None),
-                        ),
-                        Arbol(0.0, None, None),
-                        Arbol(1.3,
-                        Arbol(4.3, None, None),
-                        Arbol(0.3, None, None),
-                        Arbol(1.0, None, None),
-                        Arbol(4.0, None, None),
-                         ),
-                         ),
-                    Arbol(0.3,
-                Arbol(4.3, None, None),
-                Arbol(0.0, None, None),
-                Arbol(3.0,
-                Arbol(4.0, None, None),
-                Arbol(3.3, None, None),
-                Arbol(0.0, None, None),
-                Arbol(0.3, None, None),
-                    ),
-                    ),
-                    )
-
-
-print(busquedaAmplitud(objArbol1))"""
 
 objArbol = Arbol (0.0,
                     Arbol(4.0,
