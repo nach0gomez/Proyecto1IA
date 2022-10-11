@@ -1,4 +1,5 @@
 from arbol import Arbol
+from decimal import Decimal
 
 
 def busquedaAmplitud(arbol):  
@@ -16,6 +17,15 @@ def busquedaAmplitud(arbol):
 
         if nodo.right != None:
             cola.append(nodo.right)
+
+        if nodo.left1 != None:
+            cola.append(nodo.left1)
+        
+        if nodo.right1 != None:
+            cola.append(nodo.right1)
+
+        if nodo.center != None:
+            cola.append(nodo.center)
     return recorrido
 
 
@@ -28,7 +38,7 @@ def busquedaAmplitud(arbol):
 """
 
 
-objArbol = Arbol(5, 
+"""objArbol = Arbol(5, 
                     Arbol(6,
                         Arbol(8,
                         Arbol(15, None, None),
@@ -41,8 +51,62 @@ objArbol = Arbol(5,
                         Arbol(10, None, None),
                         Arbol(11, None, None)
                     )            
-                )          
+                ) """         
 
 
 
+#print(busquedaAmplitud(objArbol))
+
+# TODO arbol inicio fin 
+"""objArbol1 = Arbol(0.0,
+                         Arbol(4.0,
+                         Arbol(4.3,
+                         Arbol(0.3, None, None),
+                         Arbol(4, None, None),
+                        ),
+                        Arbol(0.0, None, None),
+                        Arbol(1.3,
+                        Arbol(4.3, None, None),
+                        Arbol(0.3, None, None),
+                        Arbol(1.0, None, None),
+                        Arbol(4.0, None, None),
+                         ),
+                         ),
+                    Arbol(0.3,
+                Arbol(4.3, None, None),
+                Arbol(0.0, None, None),
+                Arbol(3.0,
+                Arbol(4.0, None, None),
+                Arbol(3.3, None, None),
+                Arbol(0.0, None, None),
+                Arbol(0.3, None, None),
+                    ),
+                    ),
+                    )
+
+
+print(busquedaAmplitud(objArbol1))"""
+
+objArbol = Arbol (0.0,
+                    Arbol(4.0,
+                    Arbol(4.3,
+                    Arbol(0.3, None, None, None, None, None),
+                    Arbol(4.0, None, None, None, None, None), None, None, None),
+                    Arbol(0.0, None, None, None, None, None),
+                    Arbol(1.3,
+                    Arbol(4.3, None, None, None, None, None),
+                    Arbol(0.3, None, None, None, None, None),
+                    Arbol(1.0, None, None, None, None, None),
+                    Arbol(4.0, None, None, None, None, None),
+                    None), None, None),
+                    Arbol(0.3,
+                    Arbol(4.3, None, None, None, None, None),
+                    Arbol(0.0, None, None, None, None, None),
+                    Arbol(3.0,
+                    Arbol(4.0, None, None, None, None, None),
+                    Arbol(3.3, None, None, None, None, None),
+                    Arbol(0.0, None, None, None, None, None),
+                    Arbol(0.3, None, None, None, None, None), None),                    
+                    None, None),
+             None, None, None)
 print(busquedaAmplitud(objArbol))
