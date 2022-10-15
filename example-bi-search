@@ -1,3 +1,7 @@
+
+# TODO esta clase es para revisarla para tomar como ejemplo para la implementacions
+
+
 class Node:
     def __init__(self, val, neighbors=[]):
         self.val = val
