@@ -1,7 +1,7 @@
 from tkinter import Tk
 from arbol import Arbol
-import networkx as nx
-import matplotlib.pyplot as plt 
+#import networkx as nx
+#import matplotlib.pyplot as plt 
 from laberinto import Laberinto
 
 def busquedaAmplitud(arbol):  
