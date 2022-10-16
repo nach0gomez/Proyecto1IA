@@ -22,7 +22,8 @@ def busquedaBidireccional(s, t):
         while nodo:
             camino.append(nodo.valor)
             nodo = nodo.padre_derecha
-            
+        
+        # * del elimina un objeto y reverse invierte el orden de una lista   
         camino.reverse()
         del camino[-1]  # * dado que el nodo de encuentro aparece dos veces
             
