@@ -21,14 +21,17 @@ def busquedaBidireccional(s, t):
 
         while nodo:
             camino.append(nodo.valor)
+            print(nodo.padre_derecha)
             nodo = nodo.padre_derecha
         
         # * del elimina un objeto y reverse invierte el orden de una lista   
         camino.reverse()
         del camino[-1]  # * dado que el nodo de encuentro aparece dos veces
+        # * index -1 se refiere al ultimo de la lista
             
         while nodo_copia:
             camino.append(nodo_copia.valor)
+            print(nodo_copia.padre_izquierda)
             nodo_copia = nodo_copia.padre_izquierda
         return camino
         
@@ -38,6 +41,7 @@ def busquedaBidireccional(s, t):
     s.visitados_derecha = True
     t.visitados_izquierda = True
 
+    
     while len(q) > 0:
         n = q.pop()
             
