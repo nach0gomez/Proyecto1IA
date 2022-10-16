@@ -48,5 +48,12 @@ def bi_directional_search(graph, start, goal):
 
     return None
 
+"""
+The code runs through a list of currently active vertices, starting from the specified start
+and goal vertices, and remembers how it got to them through a dictionary of {vertices : lists}.
+If an active vertex finds itself next to another active vertex with a path that started from the 
+other end, it merges the lists and returns the results, otherwise it extends all the paths and
+continues.
+"""
 
-print(bi_directional_search(example_graph, 1, 6))
+print(bi_directional_search(example_graph, 4, 6))
