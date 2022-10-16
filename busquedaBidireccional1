@@ -1,59 +1,63 @@
 
-# * through a dictionary of {vertices : lists}
-example_graph = {0:[1,2], 1:[0,3,4], 3:[1], 4:[1], 2:[0,5,6], 5:[2], 6:[2]}
+# * Representado a traves de un diccionario de {vertices : listas}
+ejemplo1 = {0:[1,2], 1:[0,3,4], 3:[1], 4:[1], 2:[0,5,6], 5:[2], 6:[2]}
 
 
-def bi_directional_search(graph, start, goal):
-    # Check if start and goal are equal.
-    if start == goal:
-        return [start]
-    # Get dictionary of currently active vertices with their corresponding paths.
-    active_vertices_path_dict = {start: [start], goal: [goal]}
-    # Vertices we have already examined.
-    inactive_vertices = set()
+def busquedaBidireccional1(arbol, inicio, meta):
+    # * Revisamos si el inicio y el final son iguales.
+    if inicio == meta:
+        return [inicio]
+    # * Obtenemos el diccionario de los vertices activos actualmente con sus correspondientes caminos.
+    dicc_caminos_vertices_activos = {inicio: [inicio], meta: [meta]}
+    # * Vertices que ya hemos verificado.
+    vertices_inactivos = set()
 
-    while len(active_vertices_path_dict) > 0:
+    while len(dicc_caminos_vertices_activos) > 0:
 
-        # Make a copy of active vertices so we can modify the original dictionary as we go.
-        active_vertices = list(active_vertices_path_dict.keys())
-        for vertex in active_vertices:
-            # Get the path to where we are.
-            current_path = active_vertices_path_dict[vertex]
-            # Record whether we started at start or goal.
-            origin = current_path[0]
-            # Check for new neighbours.
-            current_neighbours = set(graph[vertex]) - inactive_vertices
-            # Check if our neighbours hit an active vertex
-            if len(current_neighbours.intersection(active_vertices)) > 0:
-                for meeting_vertex in current_neighbours.intersection(active_vertices):
-                    # Check the two paths didn't start at same place. If not, then we've got a path from start to goal.
-                    if origin != active_vertices_path_dict[meeting_vertex][0]:
-                        # Reverse one of the paths.
-                        active_vertices_path_dict[meeting_vertex].reverse()
-                        # return the combined results
-                        return active_vertices_path_dict[vertex] + active_vertices_path_dict[meeting_vertex]
+        # * Hace una copia de los vertices para poder modificar el diccionario en el trayecto.
+        vertices_activos = list(dicc_caminos_vertices_activos.keys())
+        for vertice in vertices_activos:
+            # * Obtiene el camino hacia donde estamos actualmente.
+            camino_actual = dicc_caminos_vertices_activos[vertice]
+            # * Guarda si empezamos en el inicio o en el final.
+            origen = camino_actual[0]
+            # * Verifica nuevos hermanos
+            hermanos_actuales = set(arbol[vertice]) - vertices_inactivos
+            # * Verifica si nuestros hermanos tienen algun vertice activo
+            if len(hermanos_actuales.intersection(vertices_activos)) > 0:
+                for vertice_encuentro in hermanos_actuales.intersection(vertices_activos):
+                    # * Verifica que los dos caminos no hayan iniciado en el mismo sitio.
+                    # * Si no, tenemos un camino desde el inicio hasta el final.
+                    if origen != dicc_caminos_vertices_activos[vertice_encuentro][0]:
+                        # * Invierte uno de los caminos.
+                        dicc_caminos_vertices_activos[vertice_encuentro].reverse()
+                        # * Retorna los caminos combinados en uno solo
+                        return dicc_caminos_vertices_activos[vertice] + dicc_caminos_vertices_activos[vertice_encuentro]
 
-            # No hits, so check for new neighbours to extend our paths.
-            if len(set(current_neighbours) - inactive_vertices - set(active_vertices))  == 0:
-                # If none, then remove the current path and record the endpoint as inactive.
-                active_vertices_path_dict.pop(vertex, None)
-                inactive_vertices.add(vertex)
+            # * Ninguno de los hermanos tiene un vertice activo, entonces
+            # * verifica si hay nuevos hermanos para extender los caminos.
+            if len(set(hermanos_actuales) - vertices_inactivos - set(vertices_activos))  == 0:
+                # * Si no hay, entonces elimina el camino actual y guarda el punto de terminacio
+                # * como inactivo.
+                dicc_caminos_vertices_activos.pop(vertice, None)
+                vertices_inactivos.add(vertice)
             else:
-                # Otherwise extend the paths, remove the previous one and update the inactive vertices.
-                for neighbour_vertex in current_neighbours - inactive_vertices - set(active_vertices):
-                    active_vertices_path_dict[neighbour_vertex] = current_path + [neighbour_vertex]
-                    active_vertices.append(neighbour_vertex)
-                active_vertices_path_dict.pop(vertex, None)
-                inactive_vertices.add(vertex)
+                # * en cualquier otro caso, extiende los caminos, remueve los caminos previos
+                # * y actualiza los vertices inactivos.
+                for vertice_hermano in hermanos_actuales - vertices_inactivos - set(vertices_activos):
+                    dicc_caminos_vertices_activos[vertice_hermano] = camino_actual + [vertice_hermano]
+                    vertices_activos.append(vertice_hermano)
+                dicc_caminos_vertices_activos.pop(vertice, None)
+                vertices_inactivos.add(vertice)
 
     return None
 
 """
-The code runs through a list of currently active vertices, starting from the specified start
-and goal vertices, and remembers how it got to them through a dictionary of {vertices : lists}.
-If an active vertex finds itself next to another active vertex with a path that started from the 
-other end, it merges the lists and returns the results, otherwise it extends all the paths and
-continues.
+El codigo se inicia a travez de una lista de vertices actualmente activos, empezando desde los vertices 
+inicio y meta especificados,y va a traves de ellos con diccionario tal {vertices : listas}.
+Si un nodo activo se encuentra a si mismo junto a otro nodo activo con un camino que haya iniciado desde el
+el otro fin, combina las listas y retorna el resultado, en cualquier otro caso extiende todos los caminos y
+continua con el resto.
 """
 
-print(bi_directional_search(example_graph, 4, 6))
+print(busquedaBidireccional1(ejemplo1,4, 6))
