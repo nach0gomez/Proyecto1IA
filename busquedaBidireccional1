@@ -4,7 +4,7 @@ ejemplo1 = {0:[1,2], 1:[0,3,4], 3:[1], 4:[1], 2:[0,5,6], 5:[2], 6:[2]}
 
 
 def busquedaBidireccional1(arbol, inicio, meta):
-    # * Revisamos si el inicio y el final son iguales.
+    # * Revisamos si el inicio y el final son iguales para descartar el caso trivial.
     if inicio == meta:
         return [inicio]
     # * Obtenemos el diccionario de los vertices activos actualmente con sus correspondientes caminos.
