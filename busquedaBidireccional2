@@ -60,7 +60,14 @@ def compararCaminos(l1, l2):
         l2 = Lista de listas, el cual representa la busqueda por amplitud de un problema dado,
         empezando desde el final-inicio
     """
-
+    
+    for i in len(l1):
+        for n in l1:
+            for n2 in l2:
+                if n==n2:
+                  return n                
+     
+                
     
 
 
@@ -107,7 +114,7 @@ EJ1
 1   X X
 2     I
                     key left right up down
-                    evitando crear los nodos del que venimos
+                    evitando crear los nodos del que venimos (delvolverse)
                     
             
   
@@ -188,6 +195,11 @@ arbol2F_I = Arbol([2,0],
 
   
 #print(busquedaAmplitud(objArbol1I_M))
-print(busquedaAmplitud(arbol2I_F))
-print(busquedaAmplitud(arbol2F_I))
+I_F = busquedaAmplitud(arbol2I_F)
+F_I = busquedaAmplitud(arbol2F_I)
+l1 = [1, 2, 3, 4, 5]
+l2 = [5, 4, 3, 2, 1]
 # * se encuentran en 0,1. Tal como en el como la salida en la que se igualan
+print(I_F)
+print(F_I)
+print(compararCaminos(I_F, F_I))
