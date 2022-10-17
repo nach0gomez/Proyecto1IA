@@ -51,8 +51,17 @@ def busquedaAmplitud(arbol):
 # * de ambas listas hasta el nodo en el que fueron iguales y lo retorne como solcion, si no 
 # * hubo ningun nodo igual, es porque no hay repsuesta para el problema.
 def compararCaminos(l1, l2):
-    """Retorna un elemento que haya sido en comun en ambas listas, si no, retorna un aviso"""
-    pass
+    """Retorna un elemento que haya sido en comun en ambas listas, si no, retorna un aviso
+        
+        Paremetros:
+        l1 = Lista de listas, el cual representa la busqueda por amplitud de un problema dado,
+        empezando desde el inicio-final
+        
+        l2 = Lista de listas, el cual representa la busqueda por amplitud de un problema dado,
+        empezando desde el final-inicio
+    """
+
+    
 
 
 
@@ -98,6 +107,7 @@ EJ1
 1   X X
 2     I
                     key left right up down
+                    evitando crear los nodos del que venimos
                     
             
   
@@ -119,7 +129,65 @@ arbol2I_F = Arbol([2,2],
                                                       None,
                                                       None,
                                                       None,
-                                                      None))))))
+                                                      None),
+                                                None,
+                                                None
+                                                ),
+                                          None,
+                                          None
+                                          ),
+                                    None
+                                    ),
+                              None
+                              ),
+                        None,
+                        None,
+                        None
+                        ),
+                  None,
+                  None,
+                  None
+                )
+
+
+arbol2F_I = Arbol([2,0],
+                  Arbol([1,0],
+                        Arbol([0,0],
+                              None,
+                              None,
+                              None,
+                              Arbol([0,1],
+                                    None,
+                                    None,
+                                    None,
+                                    Arbol([0,2],
+                                          None,
+                                          Arbol([1,2],
+                                                None,
+                                                Arbol([2,2],
+                                                      None,
+                                                      None,
+                                                      None,
+                                                      None),
+                                                None,
+                                                None
+                                                ),
+                                          None,
+                                          None
+                                          )
+                                    )
+                              ),
+                        None,
+                        None,
+                        None
+                        ),
+                  None,
+                  None,
+                  None
+                )
 
   
-print(busquedaAmplitud(objArbol1I_M))
+#print(busquedaAmplitud(objArbol1I_M))
+print(busquedaAmplitud(arbol2I_F))
+print(busquedaAmplitud(arbol2F_I))
+# * se encuentran en 0,1. Tal como en el como la salida en la que se igualan
