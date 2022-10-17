@@ -1,0 +1,125 @@
+
+# * Sabemos que cada arbol tendra como maximo 4 hijos, ya que son las 4 posiciones donde
+# * se podra mover
+    
+class Arbol(object):
+    """Clase arbol usada para representar los arboles como objetos y ser evaluados
+
+    Args:
+        object (arbol): objeto tipo arbol que se modifica o se genera
+    """
+    def __init__(self, key, left, right, up, down):
+        self.key = key
+        self.left = left
+        self.right = right
+        self.up = up
+        self.down = down
+
+
+def busquedaAmplitud(arbol): 
+    """Retorna la lista de la busqueda por amplitud de un arbol dado.""" 
+    
+    cola = []
+    cola.append(arbol) # * adiciona la raiz a la cola
+    recorrido = [] # * lista de recorridos
+
+    while len(cola) > 0:   # * comienza a buscar el recorrido solamente si la cola no esta vacia
+        nodo = cola.pop(0);  # * trae el primer valor y lo asigna a nodo
+        recorrido.append(nodo.key)  # * le asigna el valor de nodo a la lista de recorridos
+
+         # * agregamos ambos hijos a la cola en caso de que no esten vacios
+        if nodo.left != None:
+            cola.append(nodo.left)
+
+        if nodo.right != None:
+            cola.append(nodo.right)
+
+        if nodo.up != None:
+            cola.append(nodo.up)
+        
+        if nodo.down != None:
+            cola.append(nodo.down)
+
+    return recorrido
+
+
+# * En este acaso lo que haremos sera a la función enviarle 2 listas, ambas son 
+# * las dos busquedas por profundidad del mismo problema, solo que la 1era es 
+# * empezando desde el inicio y la 2da es empezando desde el final (meta).
+
+# * la intencion es lograr que me las compare a ambas, si tienen un nodo en comun, una las partes
+# * de ambas listas hasta el nodo en el que fueron iguales y lo retorne como solcion, si no 
+# * hubo ningun nodo igual, es porque no hay repsuesta para el problema.
+def compararCaminos(l1, l2):
+    """Retorna un elemento que haya sido en comun en ambas listas, si no, retorna un aviso"""
+    pass
+
+
+
+# * definimos dos arboles para ir probando
+
+
+
+# * Este es el arbol que estamos representando
+"""  
+                             5
+                  6                   7
+         8               9        10     11
+    16 15 14 13
+    
+    
+
+"""
+objArbol1I_M = Arbol([5,0], 
+                    Arbol([6,0],
+                        Arbol([8,0],
+                            Arbol([16,0], None, None, None,None),
+                            Arbol([15,0], None, None, None, None),
+                            Arbol([14,0], None, None, None, None),
+                            Arbol([13,0], None, None, None,None)
+                            ),
+                        Arbol([9,0],
+                              None, 
+                              None, 
+                              None, 
+                              None),None, None
+                    ), 
+                    Arbol([7,0], 
+                        Arbol([10,0], None, None, None, None),
+                        Arbol([11,0], None, None, None, None),
+                        None,None
+                    ), None, None            
+                )          
+
+""" 
+EJ1
+  0 1 2
+0     F
+1   X X
+2     I
+                    key left right up down
+                    
+            
+  
+"""
+
+arbol2I_F = Arbol([2,2],
+                  Arbol([1,2],
+                        Arbol([0,2],
+                              None,
+                              None,
+                              Arbol([0,1],
+                                    None,
+                                    None,
+                                    Arbol([0,0],
+                                          None,
+                                          Arbol([1,0],
+                                                None,
+                                                Arbol([2,0],
+                                                      None,
+                                                      None,
+                                                      None,
+                                                      None))))))
+
+  
+print(busquedaAmplitud(objArbol1I_M))
