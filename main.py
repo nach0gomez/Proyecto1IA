@@ -13,7 +13,7 @@ def busquedaAmplitud(arbol):
         nodo = cola.pop(0);  # * trae el primer valor y lo asigna a nodo
         recorrido.append(nodo.key)  # * le asigna el valor de nodo a la lista de recorridos
 
-         # * agregamos ambos hijos a la cola en caso de que no esten vacios
+         # * agregamos los hijos a la cola en caso de que no esten vacios
         if nodo.left != None:
             cola.append(nodo.left)
 
