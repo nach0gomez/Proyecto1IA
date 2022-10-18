@@ -50,7 +50,7 @@ def busquedaAmplitud(arbol):
 # * la intencion es lograr que me las compare a ambas, si tienen un nodo en comun, una las partes
 # * de ambas listas hasta el nodo en el que fueron iguales y lo retorne como solcion, si no 
 # * hubo ningun nodo igual, es porque no hay repsuesta para el problema.
-def compararCaminos(l1, l2):
+def compararCaminos(lists):
     """Retorna un elemento que haya sido en comun en ambas listas, si no, retorna un aviso
         
         Paremetros:
@@ -61,18 +61,30 @@ def compararCaminos(l1, l2):
         empezando desde el final-inicio
     """
     
-    for i in len(l1):
-        for n in l1:
-            for n2 in l2:
-                if n==n2:
-                  return n                
-     
-                
+    
+
+    sets = [set(), set()]
+    for a,b in zip(*lists):
+        sets[0].add(a)
+        sets[1].add(b)
+        if sets[0]&sets[1]:
+           print("common elements in first overlap:")
+           print(*sets[0]&sets[1])
+           break
+        else:
+           print("no overlap")
+    
+def busquedaBidireccional(arbol):
+    pass
+
+def construirArbolI_F(arbol):
+    """Retorna el arbol construido de I a F listo para ser evaluado en busqueda"""
     
 
 
-
-# * definimos dos arboles para ir probando
+def construirArbolF_I(arbol):
+    """Retorna el arbol construido de F a I  listo para ser evaluado en busqueda"""
+    pass
 
 
 
@@ -193,13 +205,18 @@ arbol2F_I = Arbol([2,0],
                   None
                 )
 
-  
+l1 = [1,2,3,4,5]
+l2 = [4,5,6,7,8]
+lists = [l1,l2]
+
+
 #print(busquedaAmplitud(objArbol1I_M))
-I_F = busquedaAmplitud(arbol2I_F)
-F_I = busquedaAmplitud(arbol2F_I)
-l1 = [1, 2, 3, 4, 5]
-l2 = [5, 4, 3, 2, 1]
+#I_F = busquedaAmplitud(arbol2I_F)
+#F_I = busquedaAmplitud(arbol2F_I)
 # * se encuentran en 0,1. Tal como en el como la salida en la que se igualan
-print(I_F)
-print(F_I)
-print(compararCaminos(I_F, F_I))
+#print(I_F)
+#print(F_I)
+#print(compararCaminos(I_F, F_I))
+print(compararCaminos(lists))
+#print(lists)
+
