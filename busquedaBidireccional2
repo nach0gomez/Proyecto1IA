@@ -2,6 +2,9 @@
 # * Sabemos que cada arbol tendra como maximo 4 hijos, ya que son las 4 posiciones donde
 # * se podra mover
     
+from operator import length_hint
+
+
 class Arbol(object):
     """Clase arbol usada para representar los arboles como objetos y ser evaluados
 
@@ -49,42 +52,25 @@ def busquedaAmplitud(arbol):
 
 # * la intencion es lograr que me las compare a ambas, si tienen un nodo en comun, una las partes
 # * de ambas listas hasta el nodo en el que fueron iguales y lo retorne como solcion, si no 
-# * hubo ningun nodo igual, es porque no hay repsuesta para el problema.
+# * hubo ningun nodo igual, es porque no hay respuesta para el problema ya que nunca se encontraron.
 def compararCaminos(lists):
-    """Retorna un elemento que haya sido en comun en ambas listas, si no, retorna un aviso
+    """Retorna un elemento que haya sido en comun en ambas listas
         
-        Paremetros:
-        l1 = Lista de listas, el cual representa la busqueda por amplitud de un problema dado,
-        empezando desde el inicio-final
-        
-        l2 = Lista de listas, el cual representa la busqueda por amplitud de un problema dado,
-        empezando desde el final-inicio
+        recibe una lista de listas [l1,l2]
     """
-    
-    
-
     sets = [set(), set()]
     for a,b in zip(*lists):
         sets[0].add(a)
         sets[1].add(b)
         if sets[0]&sets[1]:
-           print("common elements in first overlap:")
-           print(*sets[0]&sets[1])
-           break
-        else:
-           print("no overlap")
-    
-def busquedaBidireccional(arbol):
-    pass
-
-def construirArbolI_F(arbol):
-    """Retorna el arbol construido de I a F listo para ser evaluado en busqueda"""
+            return a
+        
     
 
 
-def construirArbolF_I(arbol):
-    """Retorna el arbol construido de F a I  listo para ser evaluado en busqueda"""
+def busquedaBidireccional(matriz):
     pass
+
 
 
 
@@ -132,19 +118,44 @@ EJ1
   
 """
 
-arbol2I_F = Arbol([2,2],
-                  Arbol([1,2],
-                        Arbol([0,2],
+nivel1 = [
+["X","X","F"],
+["X","O","O"],
+["X","X","I"]
+]
+
+
+def construirArbolI_F(matriz):
+    """Retorna el arbol construido de I a F listo para ser evaluado en busqueda"""
+    for i in range(len(matriz)):
+        for j in range(len(matriz[i])):
+            if matriz[i][j] == "I":
+                incio
+                print(incio)
+
+        
+
+
+
+construirArbolI_F(nivel1)
+
+def construirArbolF_I(matriz):
+    """Retorna el arbol construido de F a I  listo para ser evaluado en busqueda"""
+    pass
+
+arbol2I_F = Arbol(2.2,
+                  Arbol(1.2,
+                        Arbol(0.2,
                               None,
                               None,
-                              Arbol([0,1],
+                              Arbol(0.1,
                                     None,
                                     None,
-                                    Arbol([0,0],
+                                    Arbol(0.0,
                                           None,
-                                          Arbol([1,0],
+                                          Arbol(1.0,
                                                 None,
-                                                Arbol([2,0],
+                                                Arbol(2.0,
                                                       None,
                                                       None,
                                                       None,
@@ -169,21 +180,21 @@ arbol2I_F = Arbol([2,2],
                 )
 
 
-arbol2F_I = Arbol([2,0],
-                  Arbol([1,0],
-                        Arbol([0,0],
+arbol2F_I = Arbol(2.0,
+                  Arbol(1.0,
+                        Arbol(0.0,
                               None,
                               None,
                               None,
-                              Arbol([0,1],
+                              Arbol(0.1,
                                     None,
                                     None,
                                     None,
-                                    Arbol([0,2],
+                                    Arbol(0.2,
                                           None,
-                                          Arbol([1,2],
+                                          Arbol(1.2,
                                                 None,
-                                                Arbol([2,2],
+                                                Arbol(2.2,
                                                       None,
                                                       None,
                                                       None,
@@ -205,18 +216,17 @@ arbol2F_I = Arbol([2,0],
                   None
                 )
 
-l1 = [1,2,3,4,5]
-l2 = [4,5,6,7,8]
-lists = [l1,l2]
+l1 = [1,2,3,4]
+l2 = [9,8,6,7,4]
+lists2 = [l1,l2]
+
+#print(compararCaminos(lists2))
+
+b1 = busquedaAmplitud(arbol2F_I)
+b2 = busquedaAmplitud(arbol2I_F)
+lists = [b1,b2]
 
 
-#print(busquedaAmplitud(objArbol1I_M))
-#I_F = busquedaAmplitud(arbol2I_F)
-#F_I = busquedaAmplitud(arbol2F_I)
-# * se encuentran en 0,1. Tal como en el como la salida en la que se igualan
-#print(I_F)
-#print(F_I)
-#print(compararCaminos(I_F, F_I))
-print(compararCaminos(lists))
-#print(lists)
+
+
 
