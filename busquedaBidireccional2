@@ -130,7 +130,7 @@ def construirArbolI_F(matriz):
     for i in range(len(matriz)):
         for j in range(len(matriz[i])):
             if matriz[i][j] == "I":
-                incio
+                incio= i,j
                 print(incio)
 
         
