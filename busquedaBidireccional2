@@ -110,12 +110,10 @@ EJ1
   0 1 2
 0     F
 1   X X
-2     I
+2     0
                     key left right up down
                     evitando crear los nodos del que venimos (delvolverse)
                     
-            
-  
 """
 
 nivel1 = [
