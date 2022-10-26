@@ -1,4 +1,4 @@
-
+import  pygame  # * instalar con pip install pygame
 # * cambio a la manera de importacion, ya que me generaba incosistencias al
 # * momento de llamar los metodos de tkinter
 from asyncio.windows_events import NULL
@@ -60,6 +60,7 @@ def buscarRuta():
     with open(ruta) as file_object:
         leer = file_object.readlines()
         print(leer)
+        
 
 def ruta1(): 
      if len(inpRuta.get()) == 0:
