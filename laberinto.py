@@ -69,6 +69,30 @@ def ruta1():
           buscarRuta() 
           messagebox.showinfo ('Mensaje', 'Ingresado correctamente')
 
+        
+# * metodo para leer la matriz desde un archivo de texto
+# * nombramos el objeto de tipo archivo como file_object y guardamos el contenido 
+# * del texto en la variable leer
+# * with es para que cuando no lo utilice mas (el objeto), cierre el intercambio de datos
+def validarArchivo(): 
+    ruta=inpRuta.get()
+    try:
+        with open(ruta) as file_object:
+            leer = file_object.read()
+            print(leer)
+            for i in leer:
+                for j in i:
+                    matriz.insert(2, [leer.split(" ")])
+            print("\n")
+            print(matriz)
+        messagebox.showinfo('Información', 'Archivo encontrado')
+        
+    except:
+        messagebox.showerror('Error', 'No se encontró un archivo valido')
+    finally:
+        inpRuta.delete(0,'end')
+
+
 # * boton para buscar el archivo en la ruta especificada
 btnAceptar = tk.Button (laberinto, text= "Aceptar",command=ruta1)
 #command=newlaberinto
