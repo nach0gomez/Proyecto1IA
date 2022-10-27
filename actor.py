@@ -1,6 +1,6 @@
 
 import  pygame
-from PIL import Image
+from PIL import Image # * Instalar Pillow (resuelto con py -m install Pillow)
 
 class jugador(pygame.sprite.Sprite):
     def __init__(self,x,y):
