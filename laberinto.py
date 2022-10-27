@@ -109,6 +109,7 @@ class Laberinto():
         self.validarCamino()
         
 
+<<<<<<< HEAD
     def validarCamino(self):
         self.cola = deque([])
         self.cola.append(self.tX)
@@ -123,6 +124,53 @@ class Laberinto():
             print("es muro")
         elif (self.ls[aux[0]][aux[1]-1] != '0'):
             print("es muro")
+=======
+def ruta1(): 
+     if len(inpRuta.get()) == 0:
+         messagebox.showinfo('Error', 'Ingrese una ruta valida') 
+     else:
+          buscarRuta() 
+          messagebox.showinfo ('Mensaje', 'Ingresado correctamente')
+
+        
+# * metodo para leer la matriz desde un archivo de texto
+# * nombramos el objeto de tipo archivo como file_object y guardamos el contenido 
+# * del texto en la variable leer
+# * with es para que cuando no lo utilice mas (el objeto), cierre el intercambio de datos
+def validarArchivo(): 
+    ruta=inpRuta.get()
+    try:
+        with open(ruta) as file_object:
+            leer = file_object.read()
+            print(leer)
+            for i in leer:
+                for j in i:
+                    matriz.insert(2, [leer.split(" ")])
+            print("\n")
+            print(matriz)
+        messagebox.showinfo('Información', 'Archivo encontrado')
+        
+    except:
+        messagebox.showerror('Error', 'No se encontró un archivo valido')
+    finally:
+        inpRuta.delete(0,'end')
+
+
+# * boton para buscar el archivo en la ruta especificada
+btnAceptar = tk.Button (laberinto, text= "Aceptar",command=ruta1)
+#command=newlaberinto
+btnAceptar.place(x = 60, y = 90)
+# * boton para cancelar el juego y cerrarlo
+btnCancelar = tk.Button (laberinto, text = "Cancelar", command=laberinto.destroy)
+btnCancelar.place(x = 220, y = 90)
+
+
+
+
+
+#siempre debe estar al final
+laberinto.mainloop() #ejecucion en bucle infinito de la interfaz
+>>>>>>> 00f9202137c28fde662ba079b93b19c5939b3a14
 
 if __name__ == '__main__':
     lab = Laberinto()
