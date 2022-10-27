@@ -1,4 +1,4 @@
-import  pygame  # * instalar con pip install pygame
+import  pygame  # * instalar con pip install pygame 
 # * cambio a la manera de importacion, ya que me generaba incosistencias al
 # * momento de llamar los metodos de tkinter
 from asyncio.windows_events import NULL
@@ -55,21 +55,9 @@ inpRuta.place(x = 170, y = 40)
 # * del texto en la variable leer
 # * with es para que cuando no lo utilice mas (el objeto), cierre el intercambio de datos
 
-def buscarRuta():
-    ruta=inpRuta.get() 
-    with open(ruta) as file_object:
-        leer = file_object.readlines()
-        print(leer)
-        
 
-def ruta1(): 
-     if len(inpRuta.get()) == 0:
-         messagebox.showinfo('Error', 'Ingrese una ruta valida') 
-     else:
-          buscarRuta() 
-          messagebox.showinfo ('Mensaje', 'Ingresado correctamente')
 
-        
+
 # * metodo para leer la matriz desde un archivo de texto
 # * nombramos el objeto de tipo archivo como file_object y guardamos el contenido 
 # * del texto en la variable leer
@@ -80,11 +68,6 @@ def validarArchivo():
         with open(ruta) as file_object:
             leer = file_object.read()
             print(leer)
-            for i in leer:
-                for j in i:
-                    matriz.insert(2, [leer.split(" ")])
-            print("\n")
-            print(matriz)
         messagebox.showinfo('Información', 'Archivo encontrado')
         
     except:
@@ -94,7 +77,7 @@ def validarArchivo():
 
 
 # * boton para buscar el archivo en la ruta especificada
-btnAceptar = tk.Button (laberinto, text= "Aceptar",command=ruta1)
+btnAceptar = tk.Button (laberinto, text= "Aceptar",command=validarArchivo)
 #command=newlaberinto
 btnAceptar.place(x = 60, y = 90)
 # * boton para cancelar el juego y cerrarlo
