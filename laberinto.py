@@ -1,4 +1,5 @@
 
+from itertools import count
 from re import L
 import  pygame  # * instalar con pip install pygame
 # * cambio a la manera de importacion, ya que me generaba incosistencias al
@@ -72,10 +73,10 @@ class Laberinto():
         self.ls = []
         strAux = ""
         while (fila != ""):
+            print(fila)
             strAux = str(fila)
             self.ls.append(list(strAux))
             fila = archivo.readline()
-        print(self.ls)
         self.buscarInicio(self.ls)
 
     def ruta1(self): 
@@ -109,22 +110,57 @@ class Laberinto():
         self.validarCamino()
         
 
-<<<<<<< HEAD
     def validarCamino(self):
         self.cola = deque([])
         self.cola.append(self.tX)
+        #self.cola.append(self.tY)
         
-        aux=self.cola.pop()
-        print(aux[0],aux[1]+1)
-        if (self.ls[aux[0]-1][aux[1]] != '0'):
-            print("")
-        elif (self.ls[aux[0]][aux[1]+1] != '0'):
-            print("es muro")
-        elif (self.ls[aux[0]+1][aux[1]] != '0'):
-            print("es muro")
-        elif (self.ls[aux[0]][aux[1]-1] != '0'):
-            print("es muro")
-=======
+        #aux=self.cola.pop()
+        
+        coords=[]
+        contador = 10
+        #while (len(self.cola) !=0):
+        while(contador!=0):
+            contador -=1
+            aux=self.cola.pop()
+            coords.append(aux)
+            print(aux[0], aux[1])
+            print(len(self.cola))
+
+            if(self.ls[aux[0]][aux[1]] == 'F'):
+                print("llegó a la meta")
+                break
+
+            if (self.ls[aux[0]-1][aux[1]] != '0' and self.validar(coords, aux)):
+                print("arriba")
+                tupla = (aux[0]-1, aux[1])
+                coords.append(tupla)
+                self.cola.append(tupla)
+
+            elif (self.ls[aux[0]][aux[1]+1] != '0' and self.validar(coords, aux)):
+                print("derecha")
+                tupla = (aux[0], aux[1]+1)
+                coords.append(tupla)
+                self.cola.append(tupla)
+                
+            elif (self.ls[aux[0]+1][aux[1]] != '0') and not self.validar(coords, aux):
+                print("abajo")
+                tupla = (aux[0]+1, aux[1])
+                coords.append(tupla)
+                self.cola.append(tupla)
+                
+            elif (self.ls[aux[0]][aux[1]-1] != '0' and  self.validar(coords, aux)):
+                print("izquierda")
+                tupla = (aux[0], aux[1]-1)
+                coords.append(tupla)
+                self.cola.append(tupla)
+
+    def validar (self, lsPunto, punto):
+        for x in lsPunto:
+            if (x[0] == punto[0] and x[1] == punto[1]):
+                return True
+        return False
+
 def ruta1(): 
      if len(inpRuta.get()) == 0:
          messagebox.showinfo('Error', 'Ingrese una ruta valida') 
@@ -155,9 +191,10 @@ def validarArchivo():
     finally:
         inpRuta.delete(0,'end')
 
+"""
 
 # * boton para buscar el archivo en la ruta especificada
-btnAceptar = tk.Button (laberinto, text= "Aceptar",command=ruta1)
+btnAceptar = tk.Button (self, text= "Aceptar",command=ruta1)
 #command=newlaberinto
 btnAceptar.place(x = 60, y = 90)
 # * boton para cancelar el juego y cerrarlo
@@ -170,7 +207,6 @@ btnCancelar.place(x = 220, y = 90)
 
 #siempre debe estar al final
 laberinto.mainloop() #ejecucion en bucle infinito de la interfaz
->>>>>>> 00f9202137c28fde662ba079b93b19c5939b3a14
-
+"""
 if __name__ == '__main__':
     lab = Laberinto()
