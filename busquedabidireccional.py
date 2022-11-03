@@ -1,7 +1,7 @@
 
 class Nodo:
     def __init__(self, valor, vecinos=[]):
-        self.valor = valor
+        self.valor = valor  
         self.vecinos = vecinos
         self.visitados_derecha = False  # * Si el nodo fue encontrado por amplitud empezando desde el raiz
         self.visitados_izquierda = False  # * Si el nodo fue encontrado por amplitud empezando desde el destino
@@ -15,7 +15,7 @@ from collections import deque
 
 def busquedaBidireccional(s, t):
     def extraerCamino(nodo):
-        """Retorna el camino cuando ambas busquedas por profunidad se han encontrado"""
+        """Retorna el camino cuando ambas busquedas por profundidad se han encontrado"""
         nodo_copia = nodo
         camino = []
 
