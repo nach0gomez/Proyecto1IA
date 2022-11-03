@@ -55,16 +55,12 @@ class Laberinto():
         #siempre debe estar al final
         laberinto.mainloop() #ejecucion en bucle infinito de la interfaz
 
+
     def buscarRuta(self):
         ruta=self.inpRuta.get() 
         archivo = open(ruta+".txt")
-        fila = archivo.readline()
-        self.ls = []
-        strAux = ""
-        while (fila != ""):
-            strAux = str(fila)
-            self.ls.append(list(strAux))
-            fila = archivo.readline()
+        leer = archivo.read()
+        print(leer)
         
     
     def ruta1(self): 
@@ -82,8 +78,8 @@ class Laberinto():
 def validarArchivo(self): 
     ruta=self.inpRuta.get()
     try:
-        with open(ruta) as file_object:
-            leer = file_object.read()
+        with open(ruta) as archivo:
+            leer = archivo.read()
             print(leer)
         messagebox.showinfo('Información', 'Archivo encontrado')
         
@@ -91,6 +87,7 @@ def validarArchivo(self):
         messagebox.showerror('Error', 'No se encontró un archivo valido')
     finally:
         self.inpRuta.delete(0,'end')
+
 
 if __name__ == '__main__':
     lab = Laberinto()
