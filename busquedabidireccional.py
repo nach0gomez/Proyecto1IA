@@ -18,8 +18,12 @@ class Nodo:
 
 
 from collections import deque
+import laberinto
 
-def busquedaBidireccional(s, t):
+# * incio y final son los nodos que usaremos en la busqueda, el inicio y el final   
+def busquedaBidireccional(inicio, final):
+    
+    
     def extraerCamino(nodo):
         """Retorna el camino cuando ambas busquedas por profundidad se han encontrado"""
         
@@ -42,12 +46,17 @@ def busquedaBidireccional(s, t):
             camino.append(nodo_copia.valor)
             nodo_copia = nodo_copia.padre_izquierda
         return camino
-        
+    
+    
+    
+    # * cola que usaremos para almacenar e iterar los nodos que vamos verificando    
     q = deque([])
-    q.append(s)
-    q.append(t)
-    s.visitados_derecha = True
-    t.visitados_izquierda = True
+    
+    # * añadimos el inicio y el final, y les ponemos como visitado = true, ya que ya los verificamos
+    q.append(inicio)
+    q.append(final)
+    inicio.visitados_derecha = True
+    final.visitados_izquierda = True
 
     
     # * mientras que en la cola de la busqueda todavia tengamos elementos, seguimos buscando
@@ -59,7 +68,8 @@ def busquedaBidireccional(s, t):
             return extraerCamino(n)
             
         # * iteramos en todos los vecinos de manera que se buscan si alguno de ellos ha sido visitado previamente
-        # * comparamos de manera que si no hay hijo izquierdo, lo ponemos como visitado y lo juntamos a la cola
+        # * comparamos de manera que si no hay hijo izquierdo, lo ponemos como visitado y lo juntamos a la cola, y agregamos 
+        # * los nodos de los vecinos a la cola q donde seguimos verificando
         for nodo in n.vecinos:
             if n.visitados_izquierda == True and not nodo.visitados_izquierda:
                 nodo.padre_izquierda = n
@@ -141,4 +151,4 @@ n7.vecinos = [n6]
 
 '''
 
-print(busquedaBidireccional(n16, n4))
+#print(busquedaBidireccional(n16, n4))
