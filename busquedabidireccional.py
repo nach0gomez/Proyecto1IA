@@ -150,7 +150,5 @@ n6.vecinos = [n1, n3, n5, n7]
 n7.vecinos = [n6]
 
 '''
-laberinto = Laberinto()
-laberinto.mostrar()
 
 #print(busquedaBidireccional(n16, n4))
