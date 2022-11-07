@@ -17,7 +17,7 @@ class Laberinto():
 
     # * determinamos, basados en el tamano de la pantalla,
     # * para centrar la interfaz
-    def mostrar (self):
+    def mostrar(self):
         laberinto=tk.Tk()
         #Titulo
         laberinto.title("Laberinto")
@@ -70,8 +70,28 @@ class Laberinto():
         else:
             self.buscarRuta() 
             messagebox.showinfo ('Mensaje', 'Ingresado correctamente')
-            
-
+    
+    xInicio = False
+    yInicio = False
+    xFinal = False
+    yFinal = False
+    
+    def buscarInicioFinal(self, juego):
+        """Buscar el inicio y el final de el array 2D llamado juego"""
+        
+        for i in range(len(juego)):
+            for j in range(len(juego[i])):
+                if juego[i][j] == 'F':
+                    print(f'encontro la meta en {i},{j}')
+                    self.xInicio = i
+                    self.yInicio = j
+                if juego[i][j] == 'I':
+                    print(f'encontro el inicio en {i},{j}')
+                    self.xFinal = i
+                    self.yFinal = j
+        if (False == self.xInicio and False == self.yInicio) or (False == self.xFinal and False == self.yFinal):
+            print('No encontro meta o final')        
+                    
         
         
     # * matriz donde guardamos el juego actual
@@ -96,15 +116,19 @@ class Laberinto():
 
         # * aqui es donde guardamos el txt en el arreglo juego[] 2D list
         while (leer != ""):
-            print(leer)
+            #print(leer)
             strAux = str(leer)
             leer = archivo.readline()
             self.juego.append(list(strAux))
         
+        
         for i in range(len(self.juego)-1):
             self.juego[i].remove('\n')
-            
         
+        self.buscarInicioFinal(self.juego)
+        
+            
+    
         
 
     
