@@ -116,7 +116,7 @@ class Laberinto():
 
         # * aqui es donde guardamos el txt en el arreglo juego[] 2D list
         while (leer != ""):
-            #print(leer)
+            print(leer)
             strAux = str(leer)
             leer = archivo.readline()
             self.juego.append(list(strAux))
@@ -125,6 +125,7 @@ class Laberinto():
         for i in range(len(self.juego)-1):
             self.juego[i].remove('\n')
         
+        print(self.juego)
         self.buscarInicioFinal(self.juego)
         
             
