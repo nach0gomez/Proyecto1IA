@@ -18,10 +18,10 @@ class Nodo:
 
 
 from collections import deque
-import laberinto
 
 # * incio y final son los nodos que usaremos en la busqueda, el inicio y el final   
 def busquedaBidireccional(inicio, final):
+    
     
     
     def extraerCamino(nodo):
@@ -150,5 +150,7 @@ n6.vecinos = [n1, n3, n5, n7]
 n7.vecinos = [n6]
 
 '''
+laberinto = Laberinto()
+laberinto.mostrar()
 
 #print(busquedaBidireccional(n16, n4))
